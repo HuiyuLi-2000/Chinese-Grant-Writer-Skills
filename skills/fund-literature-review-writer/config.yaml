@@ -1,0 +1,277 @@
+# NSFC 文献综述与文献评述写作技能配置
+
+# 技能基本信息
+skill:
+  name: fund-literature-review-writer
+  version: 1.0.0
+  description: 撰写NSFC申请书的国内外研究现状及发展动态分析+文献评述
+
+# 项目类型默认配置
+project_type:
+  default: 面上项目
+  options:
+    - 面上项目
+    - 重点项目
+    - 青年项目
+    - 省基金
+    - 人文社科
+
+# 字数规范（单位：字）
+word_count:
+  面上项目:
+    literature_review: 3000-4000
+    literature_comment: 800-1200
+    total: 3800-5200
+  重点项目:
+    literature_review: 5000-7000
+    literature_comment: 1000-1500
+    total: 6000-8500
+  青年项目:
+    literature_review: 2000-2500
+    literature_comment: 500-800
+    total: 2500-3300
+  省基金:
+    literature_review: 2000-2500
+    literature_comment: 500-800
+    total: 2500-3300
+  人文社科:
+    literature_review: 1500-1800
+    literature_comment: 200-400
+    total: 1500-2000
+
+# 主题数量规范
+topic_count:
+  面上项目: 3-4
+  重点项目: 5
+  青年项目: 3
+  省基金: 3
+  人文社科: 1-2
+
+# 子主题数量规范
+subtopic_count:
+  min: 2
+  max: 4
+
+# 引用格式配置
+citation:
+  default_format: 作者-年份制
+  options:
+    - 作者-年份制
+    - 编号制
+  chinese_format: "姓名等(年份)"
+  english_format: "Author et al.(年份)"
+
+# 文献检索配置
+search:
+  # 检索源
+  sources:
+    - citation-finder      # OpenAlex + Crossref + Exa + Google Scholar
+    - zotero-mcp           # Zotero个人文献库
+    - local-files          # 本地文件搜索
+
+  # 禁用检索源
+  disabled_sources:
+    - pubmed
+    - arxiv
+
+  # citation-finder 配置
+  citation_finder:
+    path: search
+    scripts:
+      search_all: search/scripts/search_all.py
+      citation_finder: search/scripts/citation_finder.py
+      rank_and_filter: search/scripts/rank_and_filter.py
+      format_bibtex: search/scripts/format_bibtex.py
+      dedup: search/scripts/dedup.py
+    data:
+      priority_journals: search/data/priority_journals.csv
+      blacklist_journals: search/data/blacklist_journals.csv
+    env_example: search/.env.example
+    references:
+      search_strategy: search/references/search-strategy.md
+      api_reference: search/references/api-reference.md
+      data_schema: search/references/data-schema.md
+      journal_tiers: search/references/journal-tiers.md
+
+  # 文献筛选优先级
+  filter_priority:
+    - review               # 综述论文
+    - highly_cited         # 高被引核心论文
+    - methodology          # 方法论基础论文
+    - recent_advances      # 最新研究进展论文
+
+  # 禁止来源
+  forbidden_sources:
+    - marketing_articles   # 营销类文章
+    - no_source_content    # 无来源内容
+    - secondary_reposts    # 二次转载数据
+    - non_academic_summary # 非学术总结性材料
+
+  # 文献数量规范
+  literature_count:
+    面上项目: 30-50
+    重点项目: 50-80
+    青年项目: 20-30
+    省基金: 20-30
+    人文社科: 15-25
+
+  # 文献语言占比
+  language_ratio:
+    面上项目:
+      english: 60-70%
+      chinese: 30-40%
+    重点项目:
+      english: 60-70%
+      chinese: 30-40%
+    青年项目:
+      english: 60-70%
+      chinese: 30-40%
+    省基金:
+      english: 50-60%
+      chinese: 40-50%
+    人文社科:
+      english: 40-50%
+      chinese: 50-60%
+
+  # 时效性要求
+  recency:
+    recent_3_years_ratio: ">=30%"
+
+  # 排序权重
+  ranking_weights:
+    relevance: 40%
+    journal_tier: 30%
+    citation_count: 20%
+    recency: 10%
+
+# BibTeX输出配置
+bibtex:
+  required_fields:
+    - title
+    - author
+    - journal
+    - year
+  optional_fields:
+    - volume
+    - number
+    - pages
+    - doi
+    - abstract
+    - isbn
+  missing_field_placeholder: unknown
+  key_format: "Author年份关键词"
+
+# 评述方式配置
+comment_style:
+  default: auto
+  options:
+    - embedded       # 嵌入式评述
+    - independent    # 独立评述小节
+    - auto           # 自动判断（根据项目类型）
+
+  # 项目类型默认评述方式
+  project_type_default:
+    机制研究型: independent
+    数据驱动型: independent
+    方法研究型: independent
+    实证研究型: embedded
+    优化决策型: embedded
+
+# 表格使用配置
+table_usage:
+  default: auto
+  options:
+    - yes
+    - no
+    - auto
+
+  # 自动判断规则
+  auto_rules:
+    method_research: yes      # 方法研究型默认使用
+    data_driven: conditional  # 数据驱动型根据文献数量判断
+    mechanism_research: optional # 机制研究型可选，概念框架处可用
+    empirical_research: no    # 实证研究型默认不使用
+    optimization: no          # 优化决策型默认不使用
+
+  # 表格使用条件
+  conditions:
+    min_literature_count: 5   # 文献数量≥5篇时使用
+    min_method_types: 3       # 方法类型≥3种时使用
+
+  # 表格类型
+  table_types:
+    method_comparison:        # 方法对比表
+      columns: [分类（可选）, 文献, 方法或研究内容, 评述]
+      applicable: [method_research, data_driven]
+      position: 综述→表格→评述 或 引入→表格→评述
+      review_column: 一句话批判性评价（非摘要）
+
+    application_summary:     # 应用汇总表
+      columns: [分类, 应用场景, 方法, 目标（可选）, 评述, 文献]
+      applicable: [method_research, data_driven]
+      position: 引入→表格→评述
+      naming: 常用"近5年XXX相关研究"限定时效性
+      review_column: 简短评价该方法在该场景中的效果或局限
+
+    feature_matrix:          # 特征矩阵表
+      columns: [文献, 多个特征维度列, √/×标记]
+      applicable: [mechanism_research, data_driven]
+      position: 引入→表格→评述
+      review_method: 空白维度即研究空白，表格后文字指出缺失维度
+
+# 批判性判断类型
+critical_judgment:
+  types:
+    - methodological          # 方法性评价
+    - data_applicability      # 数据适用性评价
+    - model_interpretability  # 模型/机制解释能力评价
+    - research_boundary       # 研究边界与局限识别
+
+  # 最低要求
+  min_types_in_comment: 2     # 文献评述至少包含2种批判性判断
+
+# 验证配置
+validation:
+  required_checks:
+    - consistency_with_research_content    # 文献综述与研究内容一致性
+    - correspondence_with_research_question # 文献评述与研究问题对应
+    - closed_loop_check                    # 文献→方法→创新闭环
+    - citation_format_consistency          # 引用格式一致性
+    - word_count_check                     # 字数检查
+    - table_check                          # 文献表格检查
+    - literature_quality_check             # 文献质量检查
+    - anti_pattern_check                   # 反模式检查
+
+# 知识库文件
+knowledge_base:
+  - knowledge_base/literature_review_style_guide.md
+  - knowledge_base/literature_review_patterns.md
+  - knowledge_base/literature_mapping_rules.md
+
+# 参考文件
+references:
+  - references/info_form.md
+  - references/output_skeletons.md
+  - references/validation_menu.md
+  - references/anti_patterns.md
+  - references/literature_search_strategy.md
+  - references/fund-search-workflow.md
+
+# 协同技能
+collaborative_skills:
+  - fund-background-writer           # 1.1 研究意义
+  - fund-research-content-writer     # 研究目标-研究内容-关键科学问题
+  - fund-technical-route-writer      # 研究方法-技术路线-创新和特色
+
+# 禁止行为
+forbidden:
+  - literature_summary_output        # 文献摘要式输出
+  - simple_listing                   # 简单罗列论文
+  - timeline_review                  # 时间线式综述
+  - fixed_template_writing           # 固定模板化写作
+  - literature_disconnected_from_topic # 文献与研究主题脱节
+  - literature_independent_system    # 文献独立成体系
+  - comment_without_criticism        # 文献评述只是总结
+  - subagent_invocation              # 调用子agent
+  - pubmed_search                    # 使用PubMed检索
+  - arxiv_search                     # 使用arXiv检索

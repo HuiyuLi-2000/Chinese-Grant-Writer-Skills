@@ -1,0 +1,101 @@
+# fund-background-writer 配置文件
+
+skill:
+  name: fund-background-writer
+  version: "1.0.0"
+  description: "NSFC立项依据研究意义写作助手，覆盖研究背景、理论意义、实践意义的撰写"
+
+# 输入配置
+input:
+  required:
+    - research_content      # 研究内容
+    - research_methods      # 研究方法
+    - technical_route       # 技术路线
+    - innovation            # 特色与创新
+    - research_objectives   # 研究目标
+    - key_scientific_problems # 关键科学问题
+  optional:
+    - project_type          # 项目类型
+    - discipline            # 学科领域
+    - existing_draft        # 已有草稿
+
+# 项目类型配置
+project_types:
+  general:  # 面上项目
+    background_words: [2000, 3000]
+    theoretical_significance_words: [300, 500]
+    practical_significance_words: [300, 500]
+    total_words: [2600, 4000]
+    policy_count: [2, 3]
+    data_count: [3, 5]
+
+  key:  # 重点项目
+    background_words: [3000, 5000]
+    theoretical_significance_words: [500, 800]
+    practical_significance_words: [500, 800]
+    total_words: [4000, 6600]
+    policy_count: [3, 5]
+    data_count: [4, 6]
+
+  youth:  # 青年项目
+    background_words: [1500, 2000]
+    theoretical_significance_words: [200, 400]
+    practical_significance_words: [200, 400]
+    total_words: [1900, 2800]
+    policy_count: [2, 3]
+    data_count: [2, 4]
+
+  provincial:  # 省基金
+    background_words: [1500, 2500]
+    theoretical_significance_words: [300, 500]
+    practical_significance_words: [300, 500]
+    total_words: [2100, 3500]
+    policy_count: [2, 3]
+    data_count: [3, 5]
+
+# 段落结构配置
+structure:
+  paragraphs:
+    A: policy_background      # 政策背景
+    B: data_background        # 数据背景
+    C: real_world_dilemma     # 现实困境
+    D: existing_limitations   # 现有研究局限
+    E: project_proposal       # 本项目方案
+    F: scientific_questions   # 科学问题
+  significance:
+    - theoretical_significance  # 理论意义
+    - practical_significance    # 实践意义
+
+# 质量约束
+quality:
+  input_background_mapping: true      # 输入-背景锚定必须完成
+  policy_support_required: true       # 必须有政策支撑
+  data_support_required: true        # 必须有数据支撑
+  no_boastful_expressions: true       # 禁止浮夸表达
+  dimension_coverage_check: true      # 四维度覆盖检查
+
+# 知识库路径
+knowledge_base:
+  writing_style_guide: "assets/templates/writing_style_guide.md"
+  structure_template: "assets/templates/structure_template.md"
+
+# 参考文件路径
+references:
+  info_form: "references/info_form.md"
+  scientific_question_guidelines: "references/scientific_question_guidelines.md"
+  scientific_hypothesis_guidelines: "references/scientific_hypothesis_guidelines.md"
+  boastful_expression_guidelines: "references/boastful_expression_guidelines.md"
+  dimension_coverage_design: "references/dimension_coverage_design.md"
+  theoretical_innovation_guidelines: "references/theoretical_innovation_guidelines.md"
+  dod_checklist: "references/dod_checklist.md"
+  methodology_term_examples: "references/methodology_term_examples.md"
+  policy_search_strategy: "references/policy_search_strategy.md"
+  data_search_strategy: "references/data_search_strategy.md"
+
+# 禁止行为
+forbidden:
+  - boastful_expressions          # 浮夸表达（首次、填补空白等）
+  - unsourced_data               # 无来源数据
+  - marketing_content            # 营销类内容
+  - secondary_repost_data        # 二次转载数据
+  - method_terminology_misuse    # 方法术语误用

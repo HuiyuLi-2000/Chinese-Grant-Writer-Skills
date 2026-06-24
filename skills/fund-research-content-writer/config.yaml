@@ -1,0 +1,120 @@
+# ================================
+# fund-research-content-writer 默认配置
+# ================================
+
+skill_info:
+  name: fund-research-content-writer
+  version: 1.0.0
+  description: NSFC研究方案写作助手，覆盖研究目标、研究内容、关键科学问题的写作。默认面上项目，支持重点/青年/省基金。
+  category: writing
+  author: "小树"
+
+parameters:
+  research_topic:
+    type: string
+    required: true
+    description: 研究主题
+  project_type:
+    type: string
+    required: false
+    default: "面上项目"
+    allowed_values: ["面上项目", "重点项目", "青年项目", "省基金"]
+  research_content_framework:
+    type: string
+    required: false
+    description: 用户已提供的研究内容框架（如有）
+
+targets:
+  output_format: markdown
+  sections:
+    - 研究目标
+    - 研究内容
+    - 关键科学问题
+
+knowledge_base:
+  style_guide: knowledge_base/research_content_style_guide.md
+  logic_patterns: knowledge_base/research_logic_patterns.md
+
+references:
+  info_form: references/info_form.md
+  output_skeletons: references/output_skeletons.md
+  validation_menu: references/validation_menu.md
+  anti_patterns: references/anti_patterns.md
+  terminology_sheet: references/terminology_sheet.md
+
+# 各项目类型的差异化配置（主体写作方式不变，只微调数量和字数）
+project_type_profiles:
+  面上项目:
+    research_objectives: 3-4个
+    research_topics: 3-4个
+    sub_topics_per_topic: 2-4个（一般3个）
+    scientific_questions: 2-3个
+    word_budget:
+      研究目标: "300-500字"
+      研究内容: "2000-3000字"
+      关键科学问题: "500-800字"
+  重点项目:
+    research_objectives: 4-5个
+    research_topics: 4-5个
+    sub_topics_per_topic: 2-4个（一般3个）
+    scientific_questions: 3-5个
+    word_budget:
+      研究目标: "500-800字"
+      研究内容: "4000-6000字"
+      关键科学问题: "800-1500字"
+  青年项目:
+    research_objectives: 2-3个
+    research_topics: 2-3个
+    sub_topics_per_topic: 2-3个
+    scientific_questions: 2个
+    word_budget:
+      研究目标: "200-400字"
+      研究内容: "1500-2500字"
+      关键科学问题: "400-600字"
+  省基金:
+    research_objectives: 3个
+    research_topics: 3个
+    sub_topics_per_topic: 2-3个
+    scientific_questions: 2-3个
+    word_budget:
+      研究目标: "300-500字"
+      研究内容: "2000-3000字"
+      关键科学问题: "500-800字"
+
+quality_contract:
+  research_content_structure:
+    - 总起大帽段（180-250字）
+    - 专题数量按项目类型配置
+    - 每个专题含专题帽段（100-200字）
+    - 每个专题含孙研究内容（数量按项目类型配置）
+    - 每个孙研究内容严格遵循6步语义顺序
+    - 专题间有明确递进关系
+  research_objectives_must:
+    - 数量按项目类型配置
+    - 每个目标用"动词+对象+预期成果"表述
+    - 目标间有逻辑递进关系
+  scientific_questions_must:
+    - 数量按项目类型配置
+    - 每个问题包含：问题陈述+为什么难+拟如何突破
+    - 问题层次高于研究内容
+
+guardrails:
+  forbidden_expressions:
+    - "首次"
+    - "领先"
+    - "填补空白"
+    - "突破性"
+    - "国际领先"
+    - "世界领先"
+    - "本文"
+    - "本文认为"
+  forbidden_behaviors:
+    - 将历史本子的具体研究内容迁移到新项目
+    - 将历史本子的研究对象和数据来源迁移到新项目
+    - 写技术实现细节、系统开发、应用推广
+  required_behaviors:
+    - 6步语义顺序用于孙研究内容段落
+    - 总起大帽段180-250字
+    - 专题帽段100-200字
+    - 孙研究内容段落300-400字/段
+    - 使用"本研究"或"本项目"而非"本文"

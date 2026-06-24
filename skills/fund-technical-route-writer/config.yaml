@@ -1,0 +1,90 @@
+# fund-technical-route-writer 配置文件
+
+skill:
+  name: fund-technical-route-writer
+  version: "1.0.0"
+  description: "NSFC申请书研究方法、技术路线与创新特色写作助手"
+
+# 输入配置
+input:
+  required:
+    - research_objective    # 研究目标
+    - research_content      # 研究内容
+    - key_scientific_problems # 关键科学问题
+  optional:
+    - specified_methods     # 指定研究方法
+    - method_draft          # 已有研究方法草稿
+    - route_draft           # 已有技术路线草稿
+    - reference_code        # 参考代码
+    - algorithm_framework   # 算法框架
+    - method_design_doc     # 方法设计文档
+    - flowchart_draft       # 流程图草稿
+    - other_materials       # 其他研究材料
+    - project_type          # 项目类型
+    - discipline            # 学科领域
+
+# 项目类型配置
+project_types:
+  general:  # 面上项目
+    methodology_words: [500, 800]
+    route_words: [2000, 3000]
+    innovation_words: [500, 800]
+    innovation_points: [3, 4]
+    route_figures: [4, 5]
+    method_count: [5, 8]
+    organization: "by_method"  # 按方法类型列举
+
+  key:  # 重点项目
+    methodology_words: [800, 1500]
+    route_words: [4000, 6000]
+    innovation_words: [800, 1500]
+    innovation_points: [5, 5]
+    route_figures: [5, 6]
+    method_count: [6, 10]
+    organization: "by_topic"  # 按课题组织
+    separate_feature_innovation: true  # 特色和创新分开写
+
+  youth:  # 青年项目
+    methodology_words: [400, 600]
+    route_words: [1500, 2500]
+    innovation_words: [400, 600]
+    innovation_points: [3, 4]
+    route_figures: [3, 4]
+    method_count: [5, 6]
+    organization: "by_method"
+
+  provincial:  # 省基金
+    methodology_words: [400, 700]
+    route_words: [1500, 2500]
+    innovation_words: [400, 700]
+    innovation_points: [3, 4]
+    route_figures: [4, 4]
+    method_count: [5, 7]
+    organization: "by_method"
+
+# 质量约束
+quality:
+  closed_loop_required: true  # 必须形成闭环
+  method_content_mapping: true  # 方法必须与内容映射
+  innovation_content_mapping: true  # 创新必须与内容映射
+  route_figure_required: true  # 必须有技术路线图
+  feasibility_analysis: true  # 必须有可行性分析
+  max_innovation_points: 5  # 创新点最大数量
+  min_innovation_points: 2  # 创新点最小数量
+
+# 知识库路径
+knowledge_base:
+  methodology_style: "knowledge_base/methodology_style_guide.md"
+  methodology_patterns: "knowledge_base/methodology_patterns.md"
+  technical_route_style: "knowledge_base/technical_route_style_guide.md"
+  technical_route_patterns: "knowledge_base/technical_route_patterns.md"
+  innovation_style: "knowledge_base/innovation_style_guide.md"
+  innovation_patterns: "knowledge_base/innovation_patterns.md"
+
+# 参考文件路径
+references:
+  info_form: "references/info_form.md"
+  output_skeletons: "references/output_skeletons.md"
+  validation_menu: "references/validation_menu.md"
+  anti_patterns: "references/anti_patterns.md"
+  terminology_sheet: "references/terminology_sheet.md"

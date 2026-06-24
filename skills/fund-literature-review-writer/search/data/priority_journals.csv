@@ -1,0 +1,55 @@
+abbreviation,full_name
+AAAI,AAAI Conference on Artificial Intelligence
+ACL,Annual Meeting of the Association for Computational Linguistics
+AISTATS,International Conference on Artificial Intelligence and Statistics
+ASPLOS,International Conference on Architectural Support for Programming Languages and Operating Systems
+CAV,International Conference on Computer Aided Verification
+CCS,ACM Conference on Computer and Communications Security
+CHI,ACM Conference on Human Factors in Computing Systems
+COLING,International Conference on Computational Linguistics
+COLT,Conference on Learning Theory
+CRYPTO,International Cryptology Conference
+CSCW,ACM Conference on Computer-Supported Cooperative Work
+CVPR,IEEE/CVF Conference on Computer Vision and Pattern Recognition
+DAC,Design Automation Conference
+ECCV,European Conference on Computer Vision
+EMNLP,Conference on Empirical Methods in Natural Language Processing
+EUROCRYPT,European Cryptology Conference
+FOCS,IEEE Symposium on Foundations of Computer Science
+FSE,ACM International Conference on the Foundations of Software Engineering
+HPCA,IEEE International Symposium on High-Performance Computer Architecture
+ICCV,IEEE/CVF International Conference on Computer Vision
+ICDE,IEEE International Conference on Data Engineering
+ICLR,International Conference on Learning Representations
+ICML,International Conference on Machine Learning
+ICRA,IEEE International Conference on Robotics and Automation
+ICSE,IEEE/ACM International Conference on Software Engineering
+IJCAI,International Joint Conference on Artificial Intelligence
+INFOCOM,IEEE International Conference on Computer Communications
+ISCA,International Symposium on Computer Architecture
+IROS,IEEE/RSJ International Conference on Intelligent Robots and Systems
+ISSTA,International Symposium on Software Testing and Analysis
+MICRO,IEEE/ACM International Symposium on Microarchitecture
+MobiCom,ACM International Conference on Mobile Computing and Networking
+NAACL,Conference of the North American Chapter of the Association for Computational Linguistics
+NeurIPS,Conference on Neural Information Processing Systems
+NSDI,Symposium on Network System Design and Implementation
+OSDI,Operating Systems Design and Implementation
+PACT,International Conference on Parallel Architectures and Compilation Techniques
+RECOMB,International Conference on Research in Computational Molecular Biology
+RSS,Robotics: Science and Systems
+SC,International Conference for High Performance Computing Networking Storage and Analysis
+SenSys,ACM Conference on Embedded Networked Sensor Systems
+SIGCOMM,ACM SIGCOMM Conference
+SIGGRAPH,ACM SIGGRAPH Conference
+SIGIR,ACM SIGIR Conference on Research and Development in Information Retrieval
+SIGKDD,ACM SIGKDD Conference on Knowledge Discovery and Data Mining
+SIGMOD,ACM SIGMOD Conference
+SODA,ACM-SIAM Symposium on Discrete Algorithms
+SOSP,ACM Symposium on Operating Systems Principles
+STOC,ACM Symposium on Theory of Computing
+UbiComp,ACM International Joint Conference on Pervasive and Ubiquitous Computing
+USENIX Security,USENIX Security Symposium
+VLDB,International Conference on Very Large Data Bases
+WSDM,ACM International Conference on Web Search and Data Mining
+WWW,The Web Conference
