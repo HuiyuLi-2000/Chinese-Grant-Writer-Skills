@@ -1,4 +1,4 @@
-# NSFC Fund Writer Skills
+# Chinese Grant Writer Skills
 
 面向 NSFC、NSSFC、各类省部级自科、社科申请书的 AI 写作技能集。从近 20 本成功申请书（管理口）中提炼写作范式，覆盖从研究设计、技术路线、立项依据到文献综述等核心撰写环节。
 
